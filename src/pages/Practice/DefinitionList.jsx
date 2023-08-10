@@ -1,9 +1,10 @@
 
-// 내부 분리 컴포넌트
+// 내부에 분리된 컴포넌트 호출
+// 학습 주제별 컴포넌트
 import ConditionalDisplay from './parts/ConditionalDisplay';
 import ConditionalRendering from './parts/ConditionalRendering';
 import DisplayingData from './parts/DisplayingData';
-import RenderingLists from './parts/RenderingList';
+import RenderingLists from './parts/RenderingLists';
 
 /* 데이터 ---------------------------------------------------------------------- */
 

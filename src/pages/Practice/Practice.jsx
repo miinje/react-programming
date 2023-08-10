@@ -97,6 +97,11 @@ function Practice() {
             {/*<img src="/react.avif" alt="리액트" />*/}
             {/*<ime src="/vite.svg" alt="비트" />*/}
 
+            <img 
+              src={imageType === 'react' ? '/react.avif' : '/vite.svg'}
+              alt={imageType === 'react' ? '리액트' : '비트'} 
+            />
+
             {/* imageType이 'vite'인 경우 'Vite', 'react'인 경우 'React' 텍스트를 화면에 표시합니다. */}
           </div>
         </dd>

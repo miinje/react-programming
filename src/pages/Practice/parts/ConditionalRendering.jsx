@@ -2,6 +2,23 @@
 import reactImagePath from '@/assets/react.svg';
 import viteImagePath from '@/assets/vite.svg';
 
+/* -------------------------------------------------------------------------- */
+
+// 데이터 가져오기(fetch data)
+// 비동기 함수(async function)
+// RESTful API (C.R.U.D)
+
+// client → server (요청, Request)
+// client ← server (응답, Response)
+
+// 통신 상태
+// - isPending (대기 중)
+// - isLoading (로딩 중)
+// - isSuccess (데이터 요청/응답 성공 수신)
+// - isError (데이터 요청 실패)
+const status = 'isLoading';
+
+
 /* 컴포넌트 --------------------------------------------------------------------- */
 
 function ConditionalRendering({ imageType }) {
@@ -17,6 +34,12 @@ function ConditionalRendering({ imageType }) {
 
   // 2-2. 조건 식 (함수 몸체 또는 JSX 내부 사용)
 
+  switch(status) {
+    case 'isPending': return <p>대기 중입니다.</p>
+    case 'isLoading': return <p>로딩 중입니다.</p>
+    case 'isError': return <p>오류 발생했어요.</p>
+    default:
+  }
   // 2-2-1. 3항 연산식
   const imageComponent = imageType === 'vite' ? (
     <img src={viteImagePath} alt="비트" />

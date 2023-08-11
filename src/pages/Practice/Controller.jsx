@@ -1,6 +1,6 @@
 // JSX 트랜스폼(변환) 엔진 업그레이드 -> 작성하지 않아도 됨
 // import React from "react"
-import GoToButton from '@/pages/Practice/GoToButton';
+import GoToButton from './GoToButton';
 
 // clean code
 

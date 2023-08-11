@@ -25,7 +25,7 @@ function DefinitionList() {
     //   <li key={statusMessage[3]}>{statusMessage[3]}</li>,
     // ];
   
-  const allHidden = true;
+  const allHidden = false;
 
   return (
     <dl className="descriptionList">

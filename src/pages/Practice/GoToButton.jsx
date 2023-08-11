@@ -1,22 +1,24 @@
+function GoToButton({ 
+  direction/* 'down' | 'up' */, 
+  label /* string */
+}) {
 
-function GoToButton({direction, label}) {
-  // props ? { direction='down' | 'up', label }
-
-  let className = '';
   // 문 또는 식
-  if (direction === 'down') {
-    className = 'scrollDown';
-  } else {
-    className = 'scrollUp' ;
-  
-  }
+  // let className = '';
+  // if (direction === 'down') {
+  //   className = 'scrollDown';
+  // } else {
+  //   className = 'scrollUp';
+  // }
+
   return (
     <button
       type="button"
+      // className={className}
       /* 식만 사용 가능 */
-      className={className}
-      aria-label="스크롤 다운"
-      title="스크롤 다운"
+      className={direction === 'down' ? 'scrollDown' : 'scrollUp'}
+      aria-label={label}
+      title={label}
     >
       <svg
         fill="currentColor"
@@ -35,7 +37,7 @@ function GoToButton({direction, label}) {
         />
       </svg>
     </button>
-  )
+  );
 }
 
 export default GoToButton

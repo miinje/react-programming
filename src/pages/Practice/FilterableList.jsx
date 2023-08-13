@@ -1,12 +1,10 @@
-import styleModule from '@/styles/FilterableList.module.css';
-
-console.log(styleModule)
+import styles from '@/styles/FilterableList.module.css';
 
 function FilterableList() {
   return (
     <>
       <form>
-        <div>
+        <div className={styles.accent}>
           <label htmlFor="todo"></label>
           <input
             id="todo"

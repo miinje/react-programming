@@ -37,14 +37,18 @@ function DemoPage() {
 
   // 다크 모드 상태 관리
   const [isDarkMode, setIsDarkMode] = useState(false);
-  const handleToggleDarkMode = () => {};
+  const handleToggleDarkMode = () => {
+    setIsDarkMode(!isDarkMode);
+  };
 
   // 리듀스 모션 상태 관리
-  const [isReducedMotion, setIsReducedMotion] = useState(true);
-  const handleToggleReducedMotion = () => {};
+  const [isReducedMotion, setIsReducedMotion] = useState(false);
+  const handleToggleReducedMotion = () => {
+    setIsReducedMotion(!isReducedMotion);
+  };
 
   // 아 유 레디 상태 관리
-  const [isReady, setIsReady] = useState(false);
+  const [isReady, setIsReady] = useState(true);
   const handleToggleReady = () => {
     setIsReady(!isReady);
   };
@@ -61,12 +65,12 @@ function DemoPage() {
       }}
     >
       <Switcher
-        on={isReady}
+        on={isDarkMode}
         label="다크 모드"
         onClick={handleToggleDarkMode}
       />
       <Switcher
-        on={isReady}
+        on={isReducedMotion}
         onText="on"
         offText="off"
         label="리듀스 모션"

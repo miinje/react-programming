@@ -1,52 +1,44 @@
-import { useId } from 'react';
 import { useState } from 'react';
 
-// const getOne = () => 1;
-
 function LearnStateAndEffects() {
-  // 지역 변수는 상태 변수???
-  // 리액트 상태 변수는 useState 훅(함수) 사용한다.
-  // Q. 컴포넌트 count 상태를 리액트에서 인식하도록 정의해봅니다.
-  // let count = 100;
-  // A. React.useState() 훅을 사용하세요.
-  // const [count2] = useState(() => getOne());
-  // console.log(count1);
-  // console.log(count2);
-  const [count, setCount] = useState(100);
-  let [step, setStep] = useState(12);
+  // 성(lastName), 이름(firstName)
+  const [lastName, setLastName] = useState('');
+  const [firstName, setFirstName] = useState('');
 
-  // 상태 정의와 상태 변경
-
-  // 관리가 까다로운 ID 속성 값을 자동 생성하는 훅
-  const stepperId = useId();
+  // 성 + 이름(fullName) 출력
+  // 파생된 상태 (derived state)
+  const fullName = lastName + firstName;
 
   return (
     <div className="m-10 flex flex-col gap-2 items-start" lang="en">
       <h2 className="text-indigo-600 text-2xl uppercase">
-        Learn State And Effects {count}
+        Learn State And Effects
       </h2>
-      <div className='flex flex-col gap-2 items-end'>
-        <div className='flex gap-2 items-center'>
-          <label htmlFor={stepperId} className='text-base'>step</label>
-          <input
-          id={stepperId}
-            type="number"
-            value={step}
-            onChange={(e)=>{
-              const nextStep = Number(e.target.value);
-              setStep(nextStep);
-            }}
-            className="w-[50px] py-1 px-2 border-slate-300 border rounded-md"
-          />
-        </div>
-        <button
-          type="button"
-          onClick={() => setCount(count + step)}
-          className="py-0.5 px-2.5 border rounded-md border-slate-600"
-        >
-          +{step}
-        </button>
-      </div>
+
+      <h3>너의 이름은?</h3>
+
+      <input
+        type="text"
+        name="lastName"
+        aria-label="성"
+        placeholder="김"
+        value={lastName}
+        onChange={(e) => {
+          setLastName(e.target.value);
+        }}
+      />
+      <input
+        type="text"
+        name="firstName"
+        aria-label="이름"
+        placeholder="덕구"
+        value={firstName}
+        onChange={(e) => {
+          setFirstName(e.target.value);
+        }}
+      />
+
+      <p>당신의 이름은 {fullName}(이)군요!</p>
     </div>
   );
 }

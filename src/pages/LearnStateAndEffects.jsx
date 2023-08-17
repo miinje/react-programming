@@ -10,6 +10,8 @@
 
 import { useEffect, useState } from 'react';
 
+// 리액트: LearnStateAndEffects 컴포넌트를 다시 실행한다.
+// 리액트 렌더 트리거 효윤님이 요청했으니까.
 function LearnStateAndEffects() {
   const [count, setCount] = useState(0);
 
@@ -41,7 +43,6 @@ function LearnStateAndEffects() {
 
   /* -------------------------------------------------------------------------- */
 
-  // 상태(스냅샷)
   const [isShow, setIsShow] = useState(true);
 
   // current state snapshot
@@ -55,11 +56,46 @@ function LearnStateAndEffects() {
     console.log('isShow = ', isShow); // current state snapshot
   };
 
+  /* -------------------------------------------------------------------------- */
+
+  // 상태 (스냅샷)
+  const [studyMessage, setStudyMessage] = useState('리액트에 대해서 알아봐요');
+
+  // 이벤트 핸들러
+  const handleChangeMessage = () => {
+    // 상태 업데이트 함수 (실행되면 렌더 트리거) - 효윤
+    // 리액트!!!! 나(효윤) 화면의 메시지가 바뀌길 원해!! 바꿔줘!!
+    setStudyMessage('효윤님 화이팅!!! 😄');
+  }
+
+  // 컴포넌트 렌더링 (함수 컴포넌트 다시 실행)
+  // DOM 커밋: 상태가 다음 상태로 변경되어 렌더링 되면 리액트가 실제 DOM 변경 이력을 반영
+
+  // 이펙트 (DOM 커밋 이후에 실행) - 희소
+  // 이펙트 실행 조건(배열로 설정) - 영은
+  useEffect(
+    /* callback - when??? */
+    () => {
+
+    },
+    [studyMessage]
+  )
+
   return (
     <div className="m-10 flex flex-col gap-2 items-start">
       <h2 className={`text-indigo-600 font-suit text-2xl`}>
         상태 및 이펙트 학습하기 ({count})
       </h2>
+      {/* DOM 커밋: 상태가 다음 상태로 변경되어 렌더링 되면 리액트가 실제 DOM 변경 이력을 반영 */}
+      <p>{studyMessage}</p>
+      <button 
+        type='button' 
+        onClick={handleChangeMessage}>메시지 변경 요청(trigger)</button>
+
+
+
+
+
       <button type="button" onClick={handleToggle}>
         {isShow ? '감춤' : '숨김'}
       </button>

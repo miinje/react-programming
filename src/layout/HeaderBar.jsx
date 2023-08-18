@@ -1,12 +1,13 @@
-// import styles from '@/styles/HeaderBar.module.css'; // -> tailwind 사용을 위해 걷어내기
-import Heading from "@/components/Heading";
+import Heading from '@/components/Heading';
+import Nav from './Nav';
 
 function HeaderBar() {
   return (
-    <header className="p-5 bg-indigo-900 text-indigo-50">
+    <header className="flex justify-between items-center p-5 bg-indigo-950 text-indigo-50">
       <Heading />
+      <Nav />
     </header>
-  )
+  );
 }
 
 export default HeaderBar;

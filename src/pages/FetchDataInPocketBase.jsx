@@ -14,6 +14,7 @@ function LearnStateAndEffects() {
   useEffect(() => {
     setIsLoading(true);
 
+    // async function + fetch
     // async await
     async function fetchTodos() {
       // fetch api

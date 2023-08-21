@@ -1,3 +1,23 @@
+# 8. 21(월)
+
+## 과제 검토
+
+1. 이미지 경로 문제
+2. 성능 문제 (디바운싱으로 해결)
+
+## 데이터 CRUD
+
+1. React Router 동적 라우팅(Dynamic Routing)
+2. PocketBase 데이터 읽기/쓰기/수정/삭제
+3. 폼 상태(Form State) 관리
+
+## 인증
+
+1. PocketBase 인증(Authentication)
+2. 회원가입(Signup)
+3. 로그인(Signin)
+
+
 # 8. 18(금)
 
 ## 커스텀 훅 & 클라이언트 측 라우팅

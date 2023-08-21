@@ -1,8 +1,9 @@
+import { Link } from 'react-router-dom';
 import Spinner from '@/components/Spinner';
 import useDocumentTitle from '@/hooks/useDocumentTitle';
-import useProductList from '@/hooks/useProductList';
+import useFetchData from '@/hooks/useFetchData';
 import { getPbImageURL, numberWithComma } from '@/utils';
-import { Link } from 'react-router-dom';
+import { getSlug } from '@/utils/getSlug';
 
 // PB → READ / CREATE / UPDATE / DELETE
 //
@@ -16,9 +17,11 @@ import { Link } from 'react-router-dom';
 // useEffect
 // custom hook
 
+const endpoint = `${import.meta.env.VITE_PB_API}/collections/products/records`;
+
 function Products() {
   useDocumentTitle('제품 목록');
-  const { isLoading, data } = useProductList();
+  const { isLoading, data } = useFetchData(endpoint);
 
   if (isLoading) {
     return <Spinner size={160} />;
@@ -30,7 +33,7 @@ function Products() {
       <ul className='grid grid-cols-3'>
         {data.items?.map((item) => (
           <li key={item.id} className='justify-self-center'>
-            <Link to={`/product/edit/${item.id}`}>
+            <Link to={`/product/edit/${getSlug(item.title)}`}>
               <figure>
                 <img
                   className="h-[160px] object-cover mx-auto"

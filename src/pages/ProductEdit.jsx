@@ -2,6 +2,7 @@ import { useEffect, useId, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import useProductItem from '@/hooks/useProductItem';
 import Spinner from '@/components/Spinner';
+import { useDelete as useDeleteProduct } from '@/hooks/products/useProducts';
 
 const initialFormState = {
   title: '',
@@ -20,6 +21,8 @@ function ProductEdit() {
   const { isLoading, data } = useProductItem(productId);
 
   const [formState, setFormState] = useState(initialFormState);
+
+  const deleteProduct = useDeleteProduct();
 
   useEffect(() => {
     if (!isLoading && data) {
@@ -40,7 +43,7 @@ function ProductEdit() {
 
   const handleEditProduct = (e) => {
     e.preventDefault(); // ← 이유
-    
+  
     // client → server(pb)
     // Content-Type: application/json
     fetch(`${import.meta.env.VITE_PB_API}/collections/products/records/${productId}`, {
@@ -50,8 +53,8 @@ function ProductEdit() {
       },
       body: JSON.stringify(formState)
     })
-    .then(response => {
-      console.log(response)
+    .then(() => {
+      navigate('/products');
     })
     .catch(error => {
       console.error(error);
@@ -60,25 +63,29 @@ function ProductEdit() {
   }
 
   const handleDeleteProduct = () => {
-    // console.log('delete product')
-    const userConfirm = confirm('저를 정말로 지우실 건가요? 🥲');
-    // console.log(userConfirm);
-
+    const userConfirm = confirm('정말로 저를 지울 건가요? 🥹');
+    
     if (userConfirm) {
-      fetch(`${import.meta.env.VITE_PB_API}/collections/products/records/${productId}`,{
-        method: 'DELETE'
-      })
-      .then(() => {
-        // PB에서 지웠다(성공)
-        // products 페이지로 이동
-        navigate('/products')
-      })
-      .catch(error=> {
-        console.error(error);
-      })
+      deleteProduct(productId)
+        .then((response) => {
+          console.log(response)
+          navigate('/products')
+        })
+        .catch(error => console.error(error));
+
+      // fetch(`${import.meta.env.VITE_PB_API}/collections/products/records/${productId}`, {
+      //   method: 'DELETE'
+      // })
+      // .then(() => {
+      //   // PB에서 지웠다(성공)
+      //   // 제품 목록 페이지로 이동
+      //   navigate('/products');
+      // })
+      // .catch(error => {
+      //   console.error(error);
+      // });
     }
   }
-
 
   if (isLoading) {
     return <Spinner size={120} />;

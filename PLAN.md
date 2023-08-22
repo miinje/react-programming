@@ -1,3 +1,26 @@
+# 8. 22(화)
+
+## 데이터 CRUD
+
+1. PocketBase 데이터 읽기/쓰기/수정/삭제
+2. 폼 상태(Form State) 관리
+
+## 컴포넌트 간 상태 공유 및 DOM 접근/조작
+
+1. 속성(props) 전달
+2. 상태 끌어올리기(Lifting state up)
+3. 프롭스 드릴링(Props Drilling) 현상
+4. 컨텍스트(Context)를 사용한 상태 공급
+5. Refs를 활용해 값을 참조하는 방법
+6. Refs를 활용해 DOM에 접근/조작하는 방법
+
+## 인증
+
+1. PocketBase 인증(Authentication)
+2. 회원가입(Signup)
+3. 로그인(Signin)
+
+
 # 8. 21(월)
 
 ## 과제 검토

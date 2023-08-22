@@ -4,14 +4,15 @@ export function useRead() {}
 
 export function useCreate() {}
 
-export function useUpdate() {}
-
 export function useUpdate() {
   return async function updateProduct(productId, productData) {
     return await fetch(
       `${apiEndpoint}/collections/products/records/${productId}`,
       {
         method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json'
+        },
         body: JSON.stringify(productData)
       }
     );

@@ -2,7 +2,7 @@ import { useEffect, useId, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import useProductItem from '@/hooks/useProductItem';
 import Spinner from '@/components/Spinner';
-import { useDelete as useDeleteProduct } from '@/hooks/products/useProducts';
+import { useDelete as useDeleteProduct, useUpdate as useUpdateProduct } from '@/hooks/products/useProducts';
 
 const initialFormState = {
   title: '',
@@ -23,6 +23,8 @@ function ProductEdit() {
   const [formState, setFormState] = useState(initialFormState);
 
   const deleteProduct = useDeleteProduct();
+  const updateProduct = useUpdateProduct();
+  
 
   useEffect(() => {
     if (!isLoading && data) {
@@ -74,7 +76,8 @@ function ProductEdit() {
         .catch(error => console.error(error));
 
       // fetch(`${import.meta.env.VITE_PB_API}/collections/products/records/${productId}`, {
-      //   method: 'DELETE'
+      //   method:import { useUpdate } from 'src/hooks/products/userProducts';
+ 'DELETE'
       // })
       // .then(() => {
       //   // PB에서 지웠다(성공)

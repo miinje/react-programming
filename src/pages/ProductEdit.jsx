@@ -11,10 +11,11 @@ const initialFormState = {
 
 function ProductEdit() {
   const titleId = useId();
-  const priceId = useId();
   const colorId = useId();
+  const priceId = useId();
 
   const { productId } = useParams();
+  console.log(productId);
   const { isLoading, data } = useProductItem(productId);
 
   const [formState, setFormState] = useState(initialFormState);
@@ -43,7 +44,7 @@ function ProductEdit() {
   if (data) {
     return (
       <>
-        <h2 className="text-2xl text-center">{data.title} 수정 폼</h2>
+        <h2 className="text-2xl text-center">{data.title}({data.color}) 수정 폼</h2>
         <form>
           {/* title */}
           <div>
@@ -57,7 +58,27 @@ function ProductEdit() {
             />
           </div>
           {/* color */}
+          <div>
+            <label htmlFor={colorId}>컬러</label>
+            <input
+              type="text"
+              name="color"
+              id={colorId}
+              value={formState.color}
+              onChange={handleChangeInput}
+            />
+          </div>
           {/* price */}
+          <div>
+            <label htmlFor={priceId}>프라이스</label>
+            <input
+              type="number"
+              name="price"
+              id={priceId}
+              value={formState.price}
+              onChange={handleChangeInput}
+            />
+          </div>
         </form>
       </>
     );

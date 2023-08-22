@@ -15,7 +15,6 @@ function ProductEdit() {
   const priceId = useId();
 
   const { productId } = useParams();
-  console.log(productId);
   const { isLoading, data } = useProductItem(productId);
 
   const [formState, setFormState] = useState(initialFormState);
@@ -37,6 +36,27 @@ function ProductEdit() {
     });
   };
 
+  const handleEditProduct = (e) => {
+    e.preventDefault(); // ← 이유
+    
+    // client → server(pb)
+    // Content-Type: application/json
+    fetch(`${import.meta.env.VITE_PB_API}/collections/products/records/${productId}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formState)
+    })
+    .then(response => {
+      console.log(response)
+    })
+    .catch(error => {
+      console.error(error);
+    });
+
+  }
+
   if (isLoading) {
     return <Spinner size={120} />;
   }
@@ -45,7 +65,7 @@ function ProductEdit() {
     return (
       <>
         <h2 className="text-2xl text-center">{data.title}({data.color}) 수정 폼</h2>
-        <form>
+        <form onSubmit={handleEditProduct}>
           {/* title */}
           <div>
             <label htmlFor={titleId}>타이틀</label>
@@ -78,6 +98,9 @@ function ProductEdit() {
               value={formState.price}
               onChange={handleChangeInput}
             />
+          </div>
+          <div>
+            <button type="submit">수정</button>
           </div>
         </form>
       </>

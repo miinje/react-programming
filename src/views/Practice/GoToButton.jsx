@@ -1,47 +1,97 @@
-function GoToButton({ 
-  direction/* 'down' | 'up' */, 
-  label /* string */,
-  // 나머지 전달된 속성(prop)을 모은 객체
-  // rest props
-  ...restProps
-}) {
+import { useState } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
+import pb from '@/api/pocketbase';
+import debounce from '@/utils/debounce';
+import { useAuth } from '@/contexts/Auth';
 
-  // 문 또는 식
-  // let className = '';
-  // if (direction === 'down') {
-  //   className = 'scrollDown';
-  // } else {
-  //   className = 'scrollUp';
-  // }
+function SignIn() {
+  const navigate = useNavigate();
+  const { isAuth } = useAuth();
+
+  const [formState, setFormState] = useState({
+    email: '',
+    password: '',
+  });
+
+  const handleSignIn = async (e) => {
+    e.preventDefault();
+
+    const { email, password } = formState;
+
+    await pb.collection('users').authWithPassword(email, password);
+
+    navigate('/');
+  };
+
+  const handleInput = debounce((e) => {
+    const { name, value } = e.target;
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
+  }, 400);
 
   return (
-    <button
-      type="button"
-      // className={className}
-      /* 식만 사용 가능 */
-      className={direction === 'down' ? 'scrollDown' : 'scrollUp'}
-      aria-label={label}
-      title={label}
-      {...restProps}
-    >
-      <svg
-        fill="currentColor"
-        strokeWidth={0}
-        viewBox="0 0 512 512"
-        height="1em"
-        width="1em"
+    <div>
+      <h2>로그인 폼</h2>
+
+      <form
+        onSubmit={handleSignIn}
+        className="flex flex-col gap-2 mt-2 justify-start items-start"
       >
-        <path
-          d="m112 268 144 144 144-144M256 392V100"
-          fill="none"
-          stroke="currentColor"
-          strokeLinecap="square"
-          strokeMiterlimit={10}
-          strokeWidth="48px"
-        />
-      </svg>
-    </button>
+        <div>
+          <label htmlFor="email">이메일</label>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            defaultValue={formState.email}
+            onChange={handleInput}
+            className="border border-slate-300 ml-2"
+          />
+        </div>
+        <div>
+          <label htmlFor="password">패스워드</label>
+          <input
+            type="password"
+            name="password"
+            id="password"
+            defaultValue={formState.password}
+            onChange={handleInput}
+            className="border border-slate-300 ml-2"
+          />
+        </div>
+        <div className="flex gap-2">
+          <button type="submit" className="disabled:cursor-not-allowed">
+            로그인
+          </button>
+          <button type="reset">취소</button>
+        </div>
+      </form>
+
+      <Link to="/signup">회원가입</Link>
+      {isAuth && <button
+        type="button"
+        className='ml-4'
+        onClick={async () => {
+          if (confirm('뭐가 맘에 안드시죠? 정말 탈퇴할 생각인가요?')) {
+            if (pb.authStore.model) {
+              try {
+                await pb.collection('users').delete(pb.authStore.model.id);
+                console.log('탈퇴 성공');
+              } catch (error) {
+                console.error(error);
+              }
+            } else {
+              console.log('현재 로그인 된 사용자가 없어요.');
+            }
+          }
+        }}
+      >
+        탈퇴
+      </button>}
+    </div>
   );
 }
 
-export default GoToButton
+export default SignIn;

@@ -38,10 +38,16 @@ function RootLayout({ displaySideMenu = false }) {
                 <Link to="/learn/05">값을 기억하기 위한 Refs</Link>
               </li>
               <li>
-                <Link to="/learn/06">
-                  DOM 요소를 직접 참조하는 Refs
-                  {/* 컴포넌트 내부의 DOM 요소를 직접 참조하는 Refs */}
-                </Link>
+                <Link to="/learn/06">DOM 요소를 참조하는 Refs</Link>
+              </li>
+              <li>
+                <Link to="/learn/07/01">GSAP 애니메이션</Link>
+              </li>
+              <li>
+                <Link to="/learn/07/02">GSAP 컨텍스트</Link>
+              </li>
+              <li>
+                <Link to="/learn/08">Framer Motion 애니메이션</Link>
               </li>
             </ul>
           </nav>

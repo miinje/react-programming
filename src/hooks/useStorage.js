@@ -52,21 +52,24 @@ function useStorage(key) {
   //   [key]
   // );
 
-  const remove = useCallback(
-    () => { deleteData(key); }, 
-    [key]
-  );
+  const remove = useCallback(() => {
+    deleteData(key);
+    setStorageData();
+  }, [key]);
 
   // const removeMemo = useMemo(
   //   () => () => { deleteData(key); },
   //   [key]
   // );
 
-  return {
-    storageData,
-    update,
-    remove,
-  };
+  return useMemo(
+    () => ({
+      storageData,
+      update,
+      remove,
+    }),
+    [remove, storageData, update]
+  );
 }
 
 export default useStorage;

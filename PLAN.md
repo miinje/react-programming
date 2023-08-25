@@ -10,7 +10,7 @@
 
 ## 인증
 
-- [ ] 인증 유지 (Persist Authentication)
+- [x] 인증 유지 (Persist Authentication)
 - [ ] LocalStorage (`useStorage` 커스텀 훅)
 
 ## 라우팅

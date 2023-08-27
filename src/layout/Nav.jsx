@@ -60,7 +60,7 @@ function Nav() {
             type="button"
             className="py-0.5 px-2 border-2 border-white/40 rounded-md hover:border-white"
             onClick={handleSignOut}
-          >
+          >ㅈ
             Sign Out
           </button>
         )}

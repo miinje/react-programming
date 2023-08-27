@@ -10,7 +10,7 @@ import { Navigate, useLocation } from 'react-router-dom';
 // 2. 비인증 사용자 → 로그인
 // 사용자 로그인 시도
 // 가입된 사용자의 경우 로그인 성공(인증)
-// 사용자의 기대사항 (접속하려던 주소로 이동하길 원할 것) 
+// 사용자의 기대사항 (접속하려던 주소로 이동하길 원할 것)
 // 사용자가 본래 접속하려던 주소로 페이지를 전환
 
 // globalThis.location.href
@@ -22,6 +22,7 @@ function ProtectRoute({ children }) {
   const wishLocationPath = `${pathname}${search}${hash}`;
 
   useEffect(() => {
+    console.log(isAuth)
     if (!isAuth) {
       import.meta.env.MODE === 'development' && toast.dismiss();
 

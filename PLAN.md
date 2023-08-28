@@ -1,5 +1,46 @@
 ###### [학습 요약](./SUMMARY.md) 보기
 
+# 8. 28(월)
+
+## 인증 
+
+- [ ] `useStorage` 커스텀 훅 재구성(re-design)
+
+## 라우팅
+
+- [ ] 인증 상태 + 보호된 루트에서 새로고침 시 로그인 페이지로 이동하는 문제
+- [ ] 루트 보호 URL 직접 접속 시, 로그인 후 접속 URL로 연결
+- [ ] 브라우저 히스토리 이력 대체(replace)
+    1. 루트 보호 URL 접속 시도
+    1. 로그인 페이지 이동 (로그인 접속 이력 제외)
+    1. 접속 URL로 연결
+
+## 대시보드 (관리자 페이지)
+
+- [ ] 상품 추가(NEW)
+- [ ] 상품 수정(EDIT)
+- [ ] 상품 삭제(DELETE)
+
+## 앱 상태 관리
+
+- [ ] [Zustand](https://docs.pmnd.rs/zustand) 라이브러리
+
+## 서버 상태 관리
+
+- [ ] [TanStack Query](https://tanstack.com/query/latest) 라이브러리
+
+## 성능 개선
+
+- [ ] [코드 분할 (Code Split)](https://ko.legacy.reactjs.org/docs/code-splitting.html#bundling)
+- [ ] [프로덕션 버전으로 빌드(Build for Production)](https://ko.vitejs.dev/guide/build.html)
+- [ ] [멋사 4기, 성능 개선 사례](https://github.com/yamoo9/likelion-FEQA/issues/286#issuecomment-1504926019) ( [BEFORE](https://github.com/yamoo9/likelion-FEQA/files/11183331/POTATO-MARKET-main.zip) → [AFTER](https://github.com/yamoo9/likelion-FEQA/files/11209558/POTATO-MARKET-review-by-yamoo9.zip) )
+
+## 배포
+
+- [ ] PocketBase 데이터베이스 배포 ([pockethost.io](https://pockethost.io))
+- [ ] React 애플리케이션 배포 ([vercel](https://ko.vitejs.dev/guide/static-deploy.html#vercel))
+
+
 # 8. 25(금)
 
 ## 컴포넌트 속성(props) 검사

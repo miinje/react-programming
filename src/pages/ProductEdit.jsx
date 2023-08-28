@@ -36,7 +36,9 @@ function ProductEdit() {
           { image: photoUrl, label: photoUrl },
         ]);
       } catch (error) {
-        console.error(error);
+        if (!(error in DOMException)) {
+          console.error();
+        }
       }
     }
 
@@ -68,8 +70,6 @@ function ProductEdit() {
     formData.append('title', titleValue);
     formData.append('color', colorValue);
     formData.append('price', priceValue);
-
-    console.log(photoValue);
 
     if (photoValue.length > 0) {
       formData.append('photo', photoValue[0]);

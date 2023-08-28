@@ -39,6 +39,11 @@
     1. 로그인 페이지 이동 (로그인 접속 이력 제외)
     1. 접속 URL로 연결
 
+## PocketBase 관계 확장
+
+- [ ] 데이터 관계 확장 요청(Expand Request)
+- [ ] 데이터 간 관계 설정 방법 실습
+
 ## 스타일 모듈
 
 - [ ] JSX 마크업이 복잡한 경우, CSS 모듈을 사용해 스타일 분리
@@ -70,8 +75,6 @@
 - [ ] PocketBase 데이터베이스 배포 ([pockethost.io](https://pockethost.io))
 - [ ] React 애플리케이션 배포 ([vercel](https://ko.vitejs.dev/guide/static-deploy.html#vercel))
 
-
-
 # 8. 25(금)
 
 ## 컴포넌트 속성(props) 검사
@@ -90,11 +93,6 @@
 - [x] 인증에 따른 라우팅 접근 시도 중 발생한 경고 해결 방법
     - Warning: Cannot update a component (`Ie`) while rendering a different component (`ProtectRoute`). 
     - To locate the bad setState() call inside `ProtectRoute`, follow the stack trace as described in https://reactjs.org/link/setstate-in-render
-- [ ] 루트 보호 URL 직접 접속 시, 로그인 후 접속 URL로 연결
-- [ ] 브라우저 히스토리 이력 대체(replace)
-    1. 루트 보호 URL 접속 시도
-    2.  로그인 페이지 이동 (로그인 접속 이력 제외)
-    3. 접속 URL로 연결
 - [x] [useLocation](https://www.notion.so/euid/Advanced-v6-3-09cfe08490104dd18167f4c968de4b3f#75f0d60253834b8f93c1dc910e44e9df) 훅 (`pathname`, `search`, `hash`, `state`)
 
 ## 파일 업로드
